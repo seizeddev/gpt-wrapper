@@ -5,7 +5,7 @@ import { ArrowUp } from "lucide-react";
 export default function Page() {
   return (
       <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="text-3xl font-bold">GPT-Wrapper</h1>
+        <h1 className="text-3xl font-bold">CodeGPT</h1>
         <h1>by <b><a href="https://arcane-website-beta.vercel.app/">Arcane</a></b> Group</h1>
 
         <div className="mx-auto w-full max-w-sm">      

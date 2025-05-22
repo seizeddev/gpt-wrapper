@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GPT Wrapper",
+  title: "CodeGPT",
   description: "A simple gpt-wrapper with a supabase login/signup",
 };
 
