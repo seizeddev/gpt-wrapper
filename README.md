@@ -10,7 +10,8 @@ A simple yet powerful example of how to integrate the [OpenAI API](https://platf
 
 - 🌐 Built with **Next.js** for server-side rendering  
 - 🛠️ Fully typed using **TypeScript**  
-- 🔌 Integrated with **OpenAI Chat API**  
+- 🔌 Integrated with **OpenAI Chat API**
+- 🛡️ Login & Register functionality using **Supabase Auth**
 - 🎨 Styled using **TailwindCSS** and [shadcn/ui](https://ui.shadcn.com/)  
 - ⚙️ Clean project structure and best practices  
 - 💬 Minimalistic chat UI to demonstrate GPT integration  
@@ -33,7 +34,8 @@ A simple yet powerful example of how to integrate the [OpenAI API](https://platf
 ### Prerequisites
 
 - Node.js (v18 or later)  
-- An OpenAI API key  
+- An OpenAI API key
+- A Supabase project with email/password auth enabled
 
 ### Installation
 
@@ -48,7 +50,9 @@ npm install
 Create a `.env.local` file in the root directory and add your OpenAI API key:
 
 ```env
-OPENAI_API_KEY=your-openai-api-key  
+OPENAI_API_KEY=your-openai-api-key
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url  
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key 
 ```
 
 ### Run the Dev Server
@@ -58,6 +62,10 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+
+## 🔐 Auth System
+
+This project includes a **Login/Register page** backed by [Supabase](https://supabase.com/) authentication. Users can sign up, log in, and access the chat interface securely.
 
 ## 🧠 How It Works
 
@@ -73,13 +81,15 @@ The app sends messages to the OpenAI API using the Chat Completion endpoint, dis
 
 - [Next.js](https://nextjs.org/)  
 - [TypeScript](https://www.typescriptlang.org/)  
-- [OpenAI API](https://platform.openai.com/docs/)  
+- [OpenAI API](https://platform.openai.com/docs/)
+- [Supabase](https://supabase.com/) 
 - [Tailwind CSS](https://tailwindcss.com/)  
 - [shadcn/ui](https://ui.shadcn.com/)  
 
 ## 🙌 Acknowledgments
 
-- [OpenAI](https://openai.com/) for the powerful API  
+- [OpenAI](https://openai.com/) for the powerful API
+- [Supabase](https://supabase.com/) for effortless authentication  
 - [shadcn/ui](https://ui.shadcn.com/) for modern React components  
 
 ## 📄 License
