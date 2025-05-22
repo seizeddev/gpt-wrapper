@@ -4,18 +4,26 @@ import { ArrowUp } from "lucide-react";
 
 export default function Page() {
   return (
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-center w-full">
         <h1 className="text-3xl font-bold">CodeGPT</h1>
         <h1>by <b><a href="https://arcane-website-beta.vercel.app/">Arcane</a></b> Group</h1>
 
-        <div className="mx-auto w-full max-w-sm">      
-          <form>
-              <div className="flex items-center px-3 py-2 rounded-lg">           
-                  <textarea id="chat" rows={1} className="resize-none block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Type anything to start..." />
-                  <Button asChild type="submit" className="inline-flex justify-center text-white bg-black rounded-full cursor-pointer hover:bg-black/80">
-                      <Link href="/register"><ArrowUp /></Link>
-                  </Button>
-              </div>
+        <div className="bg-white px-4 py-4 w-full flex justify-center">
+          <form className="w-full max-w-3xl flex items-center gap-4">
+            <textarea
+              rows={1}
+              className="flex-1 resize-none rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent shadow-sm"
+              placeholder="Send a message..."
+              style={{ minHeight: '44px', maxHeight: '200px' }}
+            />
+
+            <button
+              className="p-3 rounded-lg bg-black text-white hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+            >
+              <Link href="/register">
+                <ArrowUp className="w-5 h-5" />
+              </Link>
+            </button>
           </form>
         </div>
 

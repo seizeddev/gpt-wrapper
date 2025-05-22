@@ -4,6 +4,7 @@ import { ArrowUp, ChevronLeft, ChevronRight, LogOut, MessageCircle } from "lucid
 import { useRouter } from 'next/navigation'
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { createClient } from '@/utils/supabase/client'
 
 export default function ChatPage() {
     const [messages, setMessages] = useState<{ role: 'user' | 'assistant'; content: string }[]>([]);
@@ -12,6 +13,21 @@ export default function ChatPage() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const router = useRouter()
+    const supabase = createClient()
+
+    useEffect(() => {
+        const checkSession = async () => {                
+            const {
+                data: { session },
+            } = await supabase.auth.getSession();
+
+            if (!session) {
+                router.replace('/login');
+            }
+        };
+
+        checkSession();
+    }, [router]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -146,9 +162,9 @@ export default function ChatPage() {
                         />
 
                         <button
-                        type="submit"
-                        disabled={loading || message.trim() === ''}
-                        className="p-3 rounded-lg bg-black text-white hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            type="submit"
+                            disabled={loading || message.trim() === ''}
+                            className="p-3 rounded-lg bg-black text-white hover:bg-black/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
                         >
                         <ArrowUp className="w-5 h-5" />
                         </button>
