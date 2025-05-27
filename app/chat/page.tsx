@@ -105,7 +105,7 @@ export default function ChatPage() {
                     <div className="w-full max-w-3xl py-6 space-y-6">
                         {messages.length === 0 && (
                             <div className="text-center text-gray-500">
-                                <h2 className="text-2xl font-semibold mb-2">Welcome to <b>Arcanes</b> CodeGPT</h2>
+                                <h2 className="text-2xl font-semibold mb-2">Welcome to CodeGPT</h2>
                                 <p>How can I help you with your programming questions?</p>
                             </div>
                         )}
@@ -113,7 +113,7 @@ export default function ChatPage() {
                         {messages.map((msg, idx) => (
                             <div
                                 key={idx}
-                                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} scroll-mb-24`}
+                                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} scroll-mb-24 p-4`}
                             >
                                 <div
                                     className={`relative max-w-xl rounded-lg px-4 py-3 ${
@@ -122,8 +122,27 @@ export default function ChatPage() {
                                             : 'bg-gray-100 text-gray-800'
                                     }`}
                                 >
-                                    <div className={`prose ${msg.role === 'user' ? 'prose-invert' : ''} max-w-none`}>
-                                        <ReactMarkdown>
+                                    <div className={`overflow-hidden prose ${msg.role === 'user' ? 'prose-invert' : ''} max-w-none break-words`}>
+                                        <ReactMarkdown
+                                            components={{
+                                                code(props) {
+                                                    const { children, className, ...rest } = props;
+                                                    const isInline = !(className && className.includes('language-'));
+
+                                                    return isInline ? (
+                                                        <code className="bg-gray-200 text-red-800 px-1 py-0.5 rounded">
+                                                            {children}
+                                                        </code>
+                                                    ) : (
+                                                        <pre className="overflow-auto rounded-md bg-gray-900 text-white p-4 text-sm">
+                                                            <code className={className} {...rest}>
+                                                                {children}
+                                                            </code>
+                                                        </pre>
+                                                    );
+                                                },
+                                            }}
+                                        >
                                             {msg.content}
                                         </ReactMarkdown>
                                     </div>
