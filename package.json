@@ -20,7 +20,7 @@
     "framer-motion": "^12.12.1",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
-    "openai": "^4.102.0",
+    "openai": "^4.103.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
